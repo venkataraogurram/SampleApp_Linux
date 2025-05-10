@@ -5,7 +5,7 @@ echo "Starting application configuration..."
 
 # Set proper permissions for web files
 chmod -R 755 /var/www/html/
-chown -R www-data:www-data /var/www/html/
+#chown -R www-data:www-data /var/www/html/
 
 # Create logs directory if it doesn't exist
 mkdir -p /var/log/webapp
