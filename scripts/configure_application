@@ -1,0 +1,25 @@
+#!/bin/bash
+# Configure application script for CodeDeploy AfterInstall hook
+
+echo "Starting application configuration..."
+
+# Set proper permissions for web files
+chmod -R 755 /var/www/html/
+chown -R www-data:www-data /var/www/html/
+
+# Create logs directory if it doesn't exist
+mkdir -p /var/log/webapp
+chmod 755 /var/log/webapp
+
+# Create a simple configuration file
+cat > /var/www/html/config.json << EOF
+{
+  "environment": "production",
+  "logLevel": "info",
+  "version": "1.0.0",
+  "lastDeployed": "$(date)"
+}
+EOF
+
+echo "Application configuration completed successfully"
+exit 0
